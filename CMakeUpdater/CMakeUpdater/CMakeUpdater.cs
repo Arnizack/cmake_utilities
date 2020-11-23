@@ -15,12 +15,12 @@ namespace CMakeHelper
         {
             this.scanner = scanner;
         }
-        public void UpdateForSource(string root_directory)
+        public void UpdateForSource(string root_directory,bool verbose = false)
         {
             CMakeListsEditor editor = new CMakeListsEditor(SourceVariable);
 
             
-            List<string> filelist = scanner.Scan(root_directory);
+            List<string> filelist = scanner.Scan(root_directory,verbose);
             //Assumption: CMakeLists of a directory always the first elment in the list 
             //Assumption: Subfolders of a directory always the last element in the list
             for (int index = 0; index < filelist.Count; index++)

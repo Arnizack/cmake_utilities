@@ -20,7 +20,7 @@ namespace CMakeHelper
             this.ExcludedFileNames = ExcludedFileNames;
         }
 
-        public List<string> Scan(string directory)
+        public List<string> Scan(string directory,bool verbose = false)
         {
             List<string> files = new List<string>();
             foreach(string searchoption in SearchOptions)
@@ -30,8 +30,12 @@ namespace CMakeHelper
             
             foreach(string subdir in Directory.GetDirectories(directory))
             {
+
+                
+
                 if (! ExcludedFolders.Exists(foldername => subdir.EndsWith(foldername) || subdir.Contains("\\.")))
                 {
+                    if (verbose) Console.WriteLine($"Search: {subdir}");
                     files.AddRange(Scan(subdir));
                 }
             }

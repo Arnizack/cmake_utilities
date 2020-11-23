@@ -15,10 +15,15 @@ namespace CMakeHelper
             {
                 directory_input = args[0];
             }
-            if(args[0] == "-h")
+            if(args.Length > 0 && args[0] == "-h")
             {
                 Console.WriteLine("CMakeUpdater <directory to CMakeLists.txt>");
                 return;
+            }
+            bool verbose = false;
+            if(args.Length > 1 && args[1] == "-v")
+            {
+                verbose = true;
             }
             //directory_input = @"H:\dev Übung\repos\CMakeCpp\SubModulesTest2";
 
@@ -32,7 +37,7 @@ namespace CMakeHelper
             DirectoryScanner scanner = new DirectoryScanner(excludedirs, extensions, excludefiles);
 
             CMakeUpdater updater = new CMakeUpdater(scanner);
-            updater.UpdateForSource(root_directory);
+            updater.UpdateForSource(root_directory, verbose);
 
             ////In Source Build
             //var processInfo = new ProcessStartInfo
