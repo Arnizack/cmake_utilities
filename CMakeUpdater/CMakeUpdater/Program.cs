@@ -25,7 +25,7 @@ namespace CMakeHelper
            
             string root_directory = Path.GetFullPath(directory_input);
 
-            List<string> excludedirs = new List<string> { "cmake", "CMakeFiles", "build", "extern", "Debug", "_deps", ".dir" };
+            List<string> excludedirs = new List<string> { "cmake", "CMakeFiles", "build", "extern","Release","libs", "Debug", "_deps", ".dir" };
             List<string> extensions = new List<string> { "CMakeLists.txt","*cu","*cuh", "*.cpp", "*.h" };
             List<string> excludefiles = new List<string> { "*.dir", "cmake_install.cmake", "CTestTestfile.cmake", "CMakeCache.txt" };
 
