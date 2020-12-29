@@ -23,7 +23,7 @@ namespace CMakeHelper
         public void Edit(string CMakeListsDirectory, List<string> SourceFiles)
         {
 
-            string cmake_path = CMakeListsDirectory + "\\CMakeLists.txt";
+            string cmake_path = CMakeListsDirectory + Path.DirectorySeparatorChar + "CMakeLists.txt";
 
             string content = "";
             using (StreamReader reader = new StreamReader(cmake_path))
@@ -53,7 +53,7 @@ namespace CMakeHelper
                 sb.Append("\"");
                 
                 string relativ_path = Path.GetRelativePath(CMakeListsDirectory, source_file);
-                relativ_path = relativ_path.Replace("\\", "/");
+                relativ_path = relativ_path.Replace(Path.DirectorySeparatorChar.ToString(), "/");
                 sb.Append(relativ_path);
                 sb.Append("\"");
                 sb.Append("\n");

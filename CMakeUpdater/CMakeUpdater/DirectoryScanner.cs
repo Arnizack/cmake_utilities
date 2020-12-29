@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
 
+
 namespace CMakeHelper
 {
     class DirectoryScanner
@@ -33,7 +34,7 @@ namespace CMakeHelper
 
                 
 
-                if (! ExcludedFolders.Exists(foldername => subdir.EndsWith(foldername) || subdir.Contains("\\.")))
+                if (! ExcludedFolders.Exists(foldername => subdir.EndsWith(foldername) || subdir.Contains(Path.DirectorySeparatorChar+".")))
                 {
                     if (verbose) Console.WriteLine($"Search: {subdir}");
                     files.AddRange(Scan(subdir));
@@ -55,7 +56,7 @@ namespace CMakeHelper
                 if (ExcludedFolders.Exists(foldername => subdir.EndsWith(foldername) ))
                 {
                     files.Add(subdir);
-                }else if(! subdir.Contains("\\."))
+                }else if(! subdir.Contains(Path.DirectorySeparatorChar+ "."))
                 {
                     files.AddRange(ScanForExcluded(subdir));
                 }
